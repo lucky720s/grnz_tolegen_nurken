@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentInput">
+
+    <fragment
+        android:id="@+id/fragmentInput"
+        android:name="com.example.grnz.FragmentInput"
+        android:label="Ввод номера"
+        tools:layout="@layout/fragment_input" />
+    <fragment
+        android:id="@+id/fragmentHistory"
+        android:name="com.example.grnz.FragmentHistory"
+        android:label="История"
+        tools:layout="@layout/fragment_history" />
+</navigation>
