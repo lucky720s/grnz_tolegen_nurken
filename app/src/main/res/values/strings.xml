@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">grnz</string>
+    <string name="exampleNum">Введите номер (например, 111aaa11)</string>
+    <string name="Check">Проверить</string>
+</resources>
