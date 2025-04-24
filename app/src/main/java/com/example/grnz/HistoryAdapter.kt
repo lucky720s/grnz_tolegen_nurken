@@ -22,7 +22,7 @@ class HistoryAdapter(private var historyList: List<NumberResult>) :
 
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
         val item = historyList[position]
-        holder.textView.text = "${item.number} → ${item.result}"
+        holder.textView.text = "${item.number} - ${item.result}"
     }
 
     override fun getItemCount(): Int = historyList.size
