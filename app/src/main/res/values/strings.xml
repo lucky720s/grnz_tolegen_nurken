@@ -1,5 +1,19 @@
 <resources>
-    <string name="app_name">grnz</string>
-    <string name="exampleNum">Введите номер (например, 111aaa11)</string>
+    <string name="app_name">Автоспот</string>
+    <string name="search_hint_enter_number">Введите номер (напр. 123ABC01)</string>
+    <string name="search_button_check">Проверить</string>
+    <string name="search_history_label">История поиска:</string>
+    <string name="search_results_label">Результаты поиска:</string>
+    <string name="search_no_results_found">Ничего не найдено</string>
+    <string name="exampleNum">Введите номер</string>
     <string name="Check">Проверить</string>
+    <string name="content_desc_car_photo">Фото автомобиля</string>
+    <string name="please_enter_number">Введите номер</string>
+    <string name="search_clear_history_button_desc">Очистить историю поиска</string>
+    <string name="search_clear_history_dialog_title">Очистка истории</string>
+    <string name="search_clear_history_dialog_message">Вы уверены, что хотите очистить историю поиска?</string>
+    <string name="search_clear_history_dialog_positive">Очистить</string>
+    <string name="search_clear_history_dialog_negative">Отмена</string>
+    <string name="search_toast_enter_number">Введите номер</string>
+
 </resources>

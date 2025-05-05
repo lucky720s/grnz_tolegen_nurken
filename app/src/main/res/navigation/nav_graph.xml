@@ -3,16 +3,86 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragmentInput">
+    app:startDestination="@id/loginFragment">
 
     <fragment
-        android:id="@+id/fragmentInput"
-        android:name="com.example.grnz.FragmentInput"
-        android:label="Ввод номера"
-        tools:layout="@layout/fragment_input" />
+        android:id="@+id/loginFragment"
+        android:name="com.example.grnz.ui.auth.LoginFragment"
+        android:label="Вход"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_mainContent"
+            app:destination="@id/main_content_graph"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+
     <fragment
-        android:id="@+id/fragmentHistory"
-        android:name="com.example.grnz.FragmentHistory"
-        android:label="История"
-        tools:layout="@layout/fragment_history" />
+        android:id="@+id/registerFragment"
+        android:name="com.example.grnz.ui.auth.RegisterFragment"
+        android:label="Регистрация"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <navigation
+        android:id="@+id/main_content_graph"
+        app:startDestination="@id/feedFragment">
+
+        <fragment
+            android:id="@+id/feedFragment"
+            android:name="com.example.grnz.ui.main.FeedFragment"
+            android:label="Лента"
+            tools:layout="@layout/fragment_feed">
+            <action
+                android:id="@+id/action_feedFragment_to_userPhotosFragment"
+                app:destination="@id/userPhotosFragment" />
+        </fragment>
+
+        <fragment
+            android:id="@+id/searchFragment"
+            android:name="com.example.grnz.ui.main.SearchFragment"
+            android:label="Поиск"
+            tools:layout="@layout/fragment_search">
+            <action
+                android:id="@+id/action_searchFragment_to_userPhotosFragment"
+                app:destination="@id/userPhotosFragment" />
+        </fragment>
+
+        <fragment
+            android:id="@+id/uploadFragment"
+            android:name="com.example.grnz.ui.upload.UploadFragment"
+            android:label="Добавить"
+            tools:layout="@layout/fragment_upload" />
+
+        <fragment
+            android:id="@+id/profileFragment"
+            android:name="com.example.grnz.ui.main.ProfileFragment"
+            android:label="Профиль"
+            tools:layout="@layout/fragment_profile" />
+
+        <fragment
+            android:id="@+id/userPhotosFragment"
+            android:name="com.example.grnz.ui.userphotos.UserPhotosFragment"
+            android:label="Фото пользователя"
+            tools:layout="@layout/fragment_user_photos">
+            <argument
+                android:name="userId"
+                app:argType="string" />
+        </fragment>
+
+        <action
+            android:id="@+id/action_global_logout"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+    </navigation>
+
 </navigation>
