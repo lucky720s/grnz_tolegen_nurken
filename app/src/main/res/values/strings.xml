@@ -15,5 +15,7 @@
     <string name="search_clear_history_dialog_positive">Очистить</string>
     <string name="search_clear_history_dialog_negative">Отмена</string>
     <string name="search_toast_enter_number">Введите номер</string>
+    <string name="search_toast_invalid_length">Номер должен состоять из 8 символов</string>
+
 
 </resources>
