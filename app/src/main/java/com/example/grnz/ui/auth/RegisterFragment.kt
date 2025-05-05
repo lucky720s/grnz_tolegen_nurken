@@ -1,6 +1,7 @@
 package com.example.grnz.ui.auth
 
 import android.os.Bundle
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,10 +44,8 @@ class RegisterFragment : Fragment() {
         registerButton.setOnClickListener {
             val email = emailEditText.text.toString().trim()
             val password = passwordEditText.text.toString().trim()
-            if (email.isNotEmpty() && password.isNotEmpty()) {
+            if (validateInput(email, password)) {
                 viewModel.registerUser(email, password)
-            } else {
-                Toast.makeText(context, "Заполните все поля", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -66,6 +65,8 @@ class RegisterFragment : Fragment() {
                     registerButton.isEnabled = true
                     goToLoginTextView.isEnabled = true
                     Toast.makeText(context, state.message ?: "Регистрация успешна!", Toast.LENGTH_SHORT).show()
+                    emailEditText.text.clear()
+                    passwordEditText.text.clear()
                     findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
                 }
                 is AuthState.Error -> {
@@ -82,6 +83,35 @@ class RegisterFragment : Fragment() {
             }
         }
     }
+
+    private fun validateInput(email: String, password: String): Boolean {
+        if (email.isEmpty()) {
+            Toast.makeText(context, "Введите Email", Toast.LENGTH_SHORT).show()
+            emailEditText.error = "Email не может быть пустым"
+            return false
+        }
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            Toast.makeText(context, "Неверный формат Email", Toast.LENGTH_SHORT).show()
+            emailEditText.error = "Неверный формат Email"
+            return false
+        }
+        if (password.isEmpty()) {
+            Toast.makeText(context, "Введите пароль", Toast.LENGTH_SHORT).show()
+            passwordEditText.error = "Пароль не может быть пустым"
+            return false
+        }
+        val minPasswordLength = 6
+        if (password.length < minPasswordLength) {
+            val errorMsg = "Пароль должен быть не менее $minPasswordLength символов"
+            Toast.makeText(context, errorMsg, Toast.LENGTH_SHORT).show()
+            passwordEditText.error = errorMsg
+            return false
+        }
+        emailEditText.error = null
+        passwordEditText.error = null
+        return true
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

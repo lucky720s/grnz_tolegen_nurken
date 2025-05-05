@@ -14,6 +14,7 @@
         android:hint="@string/search_hint_enter_number"
         android:inputType="textCapCharacters|textNoSuggestions"
         android:minHeight="48dp"
+        android:maxLength="8"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_check"

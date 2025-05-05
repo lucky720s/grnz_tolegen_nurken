@@ -70,7 +70,12 @@ class SearchFragment : Fragment() {
     private fun setupRecyclerViews() {
         historyAdapter = SearchHistoryAdapter(emptyList()) { clickedGrnz ->
             numberEditText.setText(clickedGrnz)
-            viewModel.searchNumber(clickedGrnz)
+            if (clickedGrnz.length == 8) {
+                viewModel.searchNumber(clickedGrnz)
+            } else {
+                Toast.makeText(context, R.string.search_toast_invalid_length, Toast.LENGTH_SHORT)
+                    .show()
+            }
         }
         historyRecyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -87,9 +92,18 @@ class SearchFragment : Fragment() {
         checkButton.setOnClickListener {
             val number = numberEditText.text.toString().trim()
             if (number.isNotEmpty()) {
-                viewModel.searchNumber(number)
+                if (number.length == 8) {
+                    viewModel.searchNumber(number)
+                } else {
+                    Toast.makeText(
+                        context,
+                        R.string.search_toast_invalid_length,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             } else {
-                Toast.makeText(context, R.string.search_toast_enter_number, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, R.string.search_toast_enter_number, Toast.LENGTH_SHORT)
+                    .show()
             }
         }
         clearHistoryButton.setOnClickListener {
@@ -138,11 +152,13 @@ class SearchFragment : Fragment() {
                         resultsAdapter.updateData(emptyList())
                     }
                 }
+
                 is SearchUiState.Error -> {
                     resultsAdapter.updateData(emptyList())
                     noResultsTextView.isVisible = true
                     noResultsTextView.text = state.message
                 }
+
                 is SearchUiState.Loading -> {}
                 is SearchUiState.Idle -> {
                     resultsAdapter.updateData(emptyList())
