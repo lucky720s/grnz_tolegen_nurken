@@ -2,8 +2,6 @@ package com.example.grnz.ui.main
 import androidx.lifecycle.*
 import com.example.grnz.data.network.ApiClient
 import com.example.grnz.data.network.model.Photo
-import com.example.grnz.data.network.model.ProfileResponse
-import com.example.grnz.data.network.model.UserPhotosResponse
 import com.example.grnz.util.Event
 import kotlinx.coroutines.launch
 import retrofit2.HttpException

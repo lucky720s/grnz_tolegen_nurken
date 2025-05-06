@@ -36,10 +36,6 @@ data class LoginRequest(
 data class LoginResponse(
     val accessToken: String
 )
-
-data class ErrorResponse(
-    val message: String
-)
 data class FeedResponse(
     val photos: List<Photo>,
     val currentPage: Int,

@@ -37,23 +37,26 @@
         android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@id/edit_text_number"
         app:layout_constraintStart_toStartOf="parent"/>
+
+    <!-- RecyclerView истории -->
+
     <ImageButton
         android:id="@+id/button_clear_history"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:src="@android:drawable/ic_menu_delete"
-        app:tint="?android:attr/textColorSecondary"
+        android:layout_marginStart="4dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/search_clear_history_button_desc"
+        android:src="@android:drawable/ic_menu_delete"
         android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/text_view_history_label"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintStart_toEndOf="@id/text_view_history_label"
         app:layout_constraintTop_toTopOf="@id/text_view_history_label"
-        app:layout_constraintBottom_toBottomOf="@id/text_view_history_label"
-        android:layout_marginStart="8dp"
-        tools:visibility="visible"/>
+        app:layout_constraintVertical_bias="0.615"
+        app:tint="?android:attr/textColorSecondary"
+        tools:visibility="visible" />
 
-    <!-- RecyclerView истории -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_history"
         android:layout_width="0dp"

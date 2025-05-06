@@ -18,7 +18,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.grnz.R
-import com.example.grnz.data.network.model.Photo
 import com.example.grnz.util.EventObserver
 
 class SearchFragment : Fragment() {
