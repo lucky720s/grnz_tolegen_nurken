@@ -18,7 +18,6 @@ open class Event<out T>(private val content: T) {
     }
 
 
-    fun peekContent(): T = content
 }
 class EventObserver<T>(private val onEventUnhandledContent: (T) -> Unit) : Observer<Event<T>> {
     override fun onChanged(value: Event<T>) {
